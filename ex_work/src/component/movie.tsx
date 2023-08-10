@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetMovie } from '../query';
-import { Card, Typography, Grid, Button, Stack } from '@mui/material'
-import Delete from './delete';
+import {  Typography, Grid, Stack } from '@mui/material'
+import DeletePage from './delete';
 
 const Movie = () => {
   console.log('hello')
@@ -19,16 +19,16 @@ const Movie = () => {
         </Grid>
 
         <Stack direction="row-reverse"
-  justifyContent="center"
-  alignItems="flex-end"
-  spacing={2} 
-  >
-         
-          {data && <Delete delete={data?.id}/>}
-          
+          justifyContent="center"
+          alignItems="flex-end"
+          spacing={2}
+        >
+
+          {data && <DeletePage delete={ data.id } />}
+
 
         </Stack>
-        <div style={{height:20}}></div>
+        <div style={{ height: 20 }}></div>
       </Grid>
 
     </>

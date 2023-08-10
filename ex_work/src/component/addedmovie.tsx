@@ -12,6 +12,7 @@ import * as yup from "yup";
 import { usePostMovies } from '../query';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Typography from '@mui/material/Typography'
+import { GetMoviestype } from '../query/request';
 yupResolver
 const schema = yup.object().shape({
     title: yup.string().required(),
@@ -32,12 +33,15 @@ export default function FormDialog() {
     };
 
     const mutation = usePostMovies()
+    interface Data{
+        title: string,
+        desc: string,
+        genre: string
+    }
+    const handleSubscribe = (data: Data ) => {
+        console.log(data , 'dataaaaaaaaaaaaaaaaaaaaaaaaaa')
+        mutation.mutate(data)
 
-    const handleSubscribe= (data: string[]) => {
-        mutation.mutate({ data })
-        //console.log(datas.data.length)
-        console.log(data);
-        console.log(errors);
         setOpen(false)
     }
     return (

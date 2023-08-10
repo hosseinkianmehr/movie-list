@@ -13,10 +13,10 @@ export default function Movis() {
             </Grid>
             <Grid container style={{ justifyContent: 'center' }} spacing={10}>
                 {
-                    data && data.map((a, index) => (<>
-                        <Grid key={index} item >
+                    data && data.map((a) => (
+                        <Grid key={a.id} item >
                             <Link to={`/movie/${a.id}`}>
-                                <Card style={{ marginTop: 100, backgroundColor: '#4c4848', width: 400, height: 200 }} key={index} >
+                                <Card style={{ marginTop: 100, backgroundColor: '#4c4848', width: 400, height: 200 }} >
                                     <div style={{ margin: 30 }}>
                                         <Typography variant='h6' color={'white'}>{a.id}</Typography>
                                         <Typography variant='h5' color={'white'}>{a.title}</Typography>
@@ -25,8 +25,7 @@ export default function Movis() {
                                 </Card>
                             </Link>
                         </Grid>
-
-                    </>))
+                    ))
                 }
             </Grid>
 
