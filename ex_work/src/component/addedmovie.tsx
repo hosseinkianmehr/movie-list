@@ -12,8 +12,7 @@ import * as yup from "yup";
 import { usePostMovies } from '../query';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Typography from '@mui/material/Typography'
-import { GetMoviestype } from '../query/request';
-yupResolver
+
 const schema = yup.object().shape({
     title: yup.string().required(),
     desc: yup.string().required(),

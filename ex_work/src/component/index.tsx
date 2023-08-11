@@ -1,5 +1,5 @@
 import { useGetMovies } from '../query'
-import { Box, Card, Grid } from '@mui/material'
+import {  Card, Grid } from '@mui/material'
 import FormDialog from './addedmovie'
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
