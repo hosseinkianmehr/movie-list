@@ -1,5 +1,5 @@
 import { useQuery,useMutation, useQueryClient } from "react-query"
-import {  deleteMovie, getMovie, getMovies, postMovies } from "./request"
+import {  deleteMovie, getMovie, getMovies, loginUser, postMovies, registerUser } from "./request"
 
 export const useGetMovies = ()=>{
     return (useQuery("getMovies",getMovies))
@@ -22,12 +22,26 @@ export const useGetMovie = (id:Id)=>{
     return (useQuery(["getMovies",id],()=>getMovie(id)))
 }
 export const useDeleteMovie = ()=>{
-    const queryClient = useQueryClient()
-    return (useMutation(deleteMovie,{
+    //const queryClient = useQueryClient()
+    
+    return (useMutation(deleteMovie
+        ,{
         onSuccess: () => {
-            // Invalidate and refetch
-            queryClient.invalidateQueries('getMovies')
+            
+            //queryClient.invalidateQueries('getMovies')
             
           }
     }))
-}
+};
+//////////////////////////server user
+export const useRegister = ()=>{
+    //const queryClient = useQueryClient()
+    
+    return (useMutation(registerUser))
+};
+
+export const useLogin = ()=>{
+    //const queryClient = useQueryClient()
+    
+    return (useMutation(loginUser))
+};

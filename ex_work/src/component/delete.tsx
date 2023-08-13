@@ -5,8 +5,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDeleteMovie } from '../query';
+import { useDeleteMovie, useGetMovie, useGetMovies } from '../query';
 import { Link } from "react-router-dom";
+import { QueryClient, useQueryClient } from 'react-query';
 interface Props{
   delete :number 
 }
@@ -22,9 +23,13 @@ export default function Delete(props: Props) {
     setOpen(false);
   };
   const deletepost =useDeleteMovie();
-
+  const client = useQueryClient()
+  const { data} = useGetMovies()
+  console.log(data ,'tessssst')
  const handledelete=()=>{
+  client.setQueriesData('getMovies', data?.filter((dara)=>dara.id!==props.delete)) 
     deletepost.mutate(props.delete)
+    
     setOpen(false)
  }
   return (
