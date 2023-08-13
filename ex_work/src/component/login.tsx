@@ -25,6 +25,7 @@ export default function Login() {
         console.log(data)
         mutation.mutate(data)
         console.log(data)
+        console.log(mutation.data ,'mutation.data')
         reset()
     }
 
