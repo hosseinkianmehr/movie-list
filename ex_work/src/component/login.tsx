@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import { useLogin } from '../query';
+import { useDispatch } from 'react-redux';
+import { login } from '../store/user';
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -15,20 +17,20 @@ const schema = yup.object().shape({
 export default function Login() {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(schema) });
-    console.log(errors, "error")
+    const dispatch = useDispatch()
+    
     const mutation =useLogin()
+   // console.log(mutation.data, "data.data")
     interface LoginData {
         email: string,
         password: string,
     }
     const handleclick = (data:LoginData) => {
-        console.log(data)
-        mutation.mutate(data)
-        console.log(data)
-        console.log(mutation.data ,'mutation.data')
+        console.log(data , 'server')
+        dispatch(login(data))
         reset()
     }
-
+    
     return (
         <Grid container  sx={{
             

@@ -39,11 +39,12 @@ interface RegisterData {
     age: number,
     password: string,
 }
-
 export const registerUser = async (data: RegisterData) => {
     return (await axios.post<RegisterData[]>('http://localhost:3002/Register/', data)).data
     console.log('api')
 }
+/*
+
 interface LoginData {
     email: string,
     password: string,
@@ -53,3 +54,4 @@ export const loginUser = async (data: LoginData) => {
     return (await axios.post<LoginData[]>('http://localhost:3002/login/', data)).data
     console.log('api')
 }
+ */

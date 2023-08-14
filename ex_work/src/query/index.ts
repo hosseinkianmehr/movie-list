@@ -40,8 +40,10 @@ export const useRegister = ()=>{
     return (useMutation(registerUser))
 };
 
+/*/
+
 export const useLogin = ()=>{
     //const queryClient = useQueryClient()
     
     return (useMutation(loginUser))
-};
+}; */
