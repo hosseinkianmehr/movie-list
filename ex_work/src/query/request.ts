@@ -55,3 +55,7 @@ export const loginUser = async (data: LoginData) => {
     console.log('api')
 }
  */
+
+export const getUser = async (id: Id) => {
+    return (await axios.get<RegisterData>(`http://localhost:3002/users/${id}/`)).data
+}

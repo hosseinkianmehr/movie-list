@@ -5,9 +5,11 @@ import * as yup from "yup";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
-import { useLogin } from '../query';
-import { useDispatch } from 'react-redux';
+//import { useLogin } from '../query';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/user';
+import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom"
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -18,8 +20,9 @@ export default function Login() {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(schema) });
     const dispatch = useDispatch()
-    
-    const mutation =useLogin()
+    const success = useSelector((state) => state.auth.success)
+    console.log(success, 'rejected')
+    //const mutation =useLogin()
    // console.log(mutation.data, "data.data")
     interface LoginData {
         email: string,
@@ -28,9 +31,17 @@ export default function Login() {
     const handleclick = (data:LoginData) => {
         console.log(data , 'server')
         dispatch(login(data))
-        reset()
+        
     }
+   // const [navigates, setnavifates] = useState(false)
     
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if (success == true){
+            navigate('/register')
+        }
+        
+    } , success)
     return (
         <Grid container  sx={{
             
@@ -72,7 +83,9 @@ export default function Login() {
                         label="password"
                     />
                 </Grid>
-
+                <Grid item>
+                <FormHelperText>{success&& "hello"}</FormHelperText>
+                </Grid>
 
             </Grid>
 

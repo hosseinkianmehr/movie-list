@@ -6,6 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import { useRegister } from '../query';
 
+import FormHelperText from '@mui/material/FormHelperText';
+
 const schema = yup.object().shape({
     email: yup.string().email().required(),
     firstname: yup.string().required(),
@@ -15,9 +17,14 @@ const schema = yup.object().shape({
 })
 
 export default function Register() {
+
+    
+    
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(schema) });
     console.log(errors)
     const mutation =useRegister()
+    console.log(mutation,'mutation')
     interface RegisterData{
         email:string,
         firstName:string,
@@ -25,7 +32,7 @@ export default function Register() {
         age:number,
         password:string,
         }
-        console.log(mutation.data,"dataaaaaassss)")
+        
     const handleclick =(data:RegisterData) => {
         //mutation.mutate(data);
         console.log(data,'data')
@@ -102,6 +109,7 @@ export default function Register() {
                         id="demo-helper-text-aligned"
                         label="password"
                     />
+                    <FormHelperText >{mutation.isError && 'The password or email address is incorrect'}</FormHelperText> 
                 </Grid>
 
 

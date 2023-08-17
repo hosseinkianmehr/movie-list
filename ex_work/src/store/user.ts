@@ -21,6 +21,7 @@ interface Reduxtype{
    user: object,
    pending: boolean,
    rejected: boolean,
+   Success: boolean
 }
 
 const initialState:Reduxtype = {
@@ -28,6 +29,7 @@ const initialState:Reduxtype = {
    user: {},
    pending: false,
    rejected: false,
+   success: false
 }
 
 export const login = createAsyncThunk("auth/login", async (data) => {
@@ -45,16 +47,16 @@ export const authSlice = createSlice({
    initialState,
    extraReducers: {
       [login.fulfilled]: (state, action:PayloadAction<loginSuccessResponse>) => {
+         localStorage.setItem("token", action.payload.accessToken);
          state.user = action.payload.user;
          state.token = action.payload.accessToken;
          state.pending = false;
+         state.success= true;
       },
-      [login.pending]: (state, action:PayloadAction<loginSuccessResponse>) => {
-         state.user = action,
+      [login.pending]: (state ) => {
          state.pending = true
       },
-      [login.rejected]: (state, action:PayloadAction<loginSuccessResponse>) => {
-         state.user = ''
+      [login.rejected]: (state) => {
          state.rejected = true
       }
    },

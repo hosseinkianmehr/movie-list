@@ -1,5 +1,6 @@
 import { useQuery,useMutation, useQueryClient } from "react-query"
-import {  deleteMovie, getMovie, getMovies, loginUser, postMovies, registerUser } from "./request"
+import {  deleteMovie, getMovie, getMovies, getUser, loginUser, postMovies, registerUser } from "./request"
+import { useNavigate } from "react-router-dom"
 
 export const useGetMovies = ()=>{
     return (useQuery("getMovies",getMovies))
@@ -36,8 +37,10 @@ export const useDeleteMovie = ()=>{
 //////////////////////////server user
 export const useRegister = ()=>{
     //const queryClient = useQueryClient()
-    
-    return (useMutation(registerUser))
+    const navigate = useNavigate()
+    return (useMutation(registerUser,{onSuccess:()=>{navigate('/login')}}
+   
+        ))
 };
 
 /*/
@@ -47,3 +50,7 @@ export const useLogin = ()=>{
     
     return (useMutation(loginUser))
 }; */
+
+export const useGetUser = (id:Id)=>{
+    return (useQuery(["getMovies",id],()=>getUser(id)))
+}
