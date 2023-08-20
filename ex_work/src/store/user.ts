@@ -60,6 +60,12 @@ export const authSlice = createSlice({
          state.rejected = true
       }
    },
-   reducers: undefined
+   reducers:{
+      logout: (state)=>{
+         localStorage.removeItem("token");
+         state.success= false;
+         console.log('sucsses false')
+      }
+   } 
 })
 export const authActions = authSlice.actions

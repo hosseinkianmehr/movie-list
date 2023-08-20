@@ -23,37 +23,33 @@ export default function Login() {
     const success = useSelector((state) => state.auth.success)
     console.log(success, 'rejected')
     //const mutation =useLogin()
-   // console.log(mutation.data, "data.data")
+    // console.log(mutation.data, "data.data")
     interface LoginData {
         email: string,
         password: string,
     }
-    const handleclick = (data:LoginData) => {
-        console.log(data , 'server')
+    const handleclick = (data: LoginData) => {
+        console.log(data, 'server')
         dispatch(login(data))
-        
+
     }
-   // const [navigates, setnavifates] = useState(false)
-   const navigate =useNavigate()
-    if (success){
+    // const [navigates, setnavifates] = useState(false)
+    const navigate = useNavigate()
+    if (success) {
         navigate('/')
     }
-    
-    
+
+
     return (
-        <Grid container  sx={{
-            
+        <Grid container sx={{
             alignItems: 'center',
             justifyContent: 'center',
             marginTop: '20vh',
-
         }}>
-            <Grid container  sx={{
-                
+            <Grid container sx={{
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBlock: 3
-
             }}>
                 <Grid item>
                     <TextField
@@ -65,13 +61,10 @@ export default function Login() {
                 </Grid>
 
             </Grid>
-
-            <Grid container  sx={{
-
+            <Grid container sx={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBlockEnd:3
-
+                marginBlockEnd: 3
             }}>
                 <Grid item >
                     <TextField
@@ -81,17 +74,13 @@ export default function Login() {
                         label="password"
                     />
                 </Grid>
-                
+
 
             </Grid>
-
             <Grid container spacing={2} sx={{
-                
                 alignItems: 'center',
                 justifyContent: 'center',
-
             }}>
-
                 <Grid item>
                     <Button variant="contained" onChange={handleSubmit(handleclick)} onClick={handleSubmit(handleclick)}>Register</Button>
                 </Grid>
