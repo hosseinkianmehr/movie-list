@@ -1,5 +1,5 @@
 import { Grid, FormHelperText } from '@mui/material';
-import Box from '@mui/material/Box';
+
 import TextField from '@mui/material/TextField';
 import * as yup from "yup";
 import { useForm } from 'react-hook-form';
@@ -8,8 +8,7 @@ import Button from '@mui/material/Button';
 //import { useLogin } from '../query';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/user';
-import { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom"
+
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -35,13 +34,8 @@ export default function Login() {
     }
    // const [navigates, setnavifates] = useState(false)
     
-    const navigate = useNavigate()
-    useEffect(()=>{
-        if (success == true){
-            navigate('/register')
-        }
-        
-    } , success)
+    
+    
     return (
         <Grid container  sx={{
             

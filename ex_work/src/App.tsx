@@ -10,17 +10,14 @@ import { authSlice } from './store/user';
 
 import { useJwt } from "react-jwt";
 import { useNavigate } from 'react-router-dom';
+import Routerpaga from './page/page';
+
+import Rout from './page';
 
 function App() {
 
   const queryClient = new QueryClient()
-  const token = localStorage.getItem("token");
-  const {decodedToken, isExpired}=useJwt(token)
-  console.log(decodedToken, isExpired,'decodedToken, isExpired')
-  const navigate = useNavigate()
-  if (token==null || isExpired) {
-   navigate('/login')
-  }
+  
   
   
   return (
