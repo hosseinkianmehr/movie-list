@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 //import { useLogin } from '../query';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/user';
+import { useNavigate } from 'react-router-dom';
 
 
 const schema = yup.object().shape({
@@ -17,7 +18,7 @@ const schema = yup.object().shape({
 
 export default function Login() {
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: yupResolver(schema) });
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
     const dispatch = useDispatch()
     const success = useSelector((state) => state.auth.success)
     console.log(success, 'rejected')
@@ -33,7 +34,10 @@ export default function Login() {
         
     }
    // const [navigates, setnavifates] = useState(false)
-    
+   const navigate =useNavigate()
+    if (success){
+        navigate('/')
+    }
     
     
     return (
@@ -77,9 +81,7 @@ export default function Login() {
                         label="password"
                     />
                 </Grid>
-                <Grid item>
-                <FormHelperText>{success&& "hello"}</FormHelperText>
-                </Grid>
+                
 
             </Grid>
 

@@ -10,7 +10,7 @@ import { authSlice } from './store/user';
 
 import { useJwt } from "react-jwt";
 import { useNavigate } from 'react-router-dom';
-import Routerpaga from './page/page';
+import Routerpaga from './page/Pages';
 
 import Rout from './page';
 
