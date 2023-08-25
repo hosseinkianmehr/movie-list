@@ -21,7 +21,7 @@ interface Reduxtype{
    user: object,
    pending: boolean,
    rejected: boolean,
-   Success: boolean
+   success: boolean
 }
 
 const initialState:Reduxtype = {
