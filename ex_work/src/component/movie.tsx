@@ -6,7 +6,7 @@ import DeletePage from './delete';
 const Movie = () => {
   console.log('hello')
   const { id } = useParams();
-  const { data } = useGetMovie(id)
+  const { data } = useGetMovie(id as string)
   console.log(data)
   return (
     <>

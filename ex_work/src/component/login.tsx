@@ -6,9 +6,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 //import { useLogin } from '../query';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../store/user';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../store/hook';
 
 
 const schema = yup.object().shape({
@@ -20,7 +21,7 @@ export default function Login() {
 
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
     const dispatch = useDispatch()
-    const success = useSelector((state) => state.auth.success)
+    const success = useAppSelector((state) => state.auth.success)
     console.log(success, 'rejected')
     //const mutation =useLogin()
     // console.log(mutation.data, "data.data")
@@ -54,7 +55,7 @@ export default function Login() {
                 <Grid item>
                     <TextField
                         {...register('email',)}
-                        helperText={errors.username && (errors.username.message)}
+                        helperText={errors.email && (errors.email.message)}
                         id="demo-helper-text-aligned-no-helper"
                         label="username"
                     />

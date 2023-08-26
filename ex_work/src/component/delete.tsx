@@ -5,9 +5,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useDeleteMovie, useGetMovie, useGetMovies } from '../query';
+import { useDeleteMovie,  useGetMovies } from '../query';
 import { Link } from "react-router-dom";
-import { QueryClient, useQueryClient } from 'react-query';
+import { useQueryClient } from 'react-query';
 interface Props{
   delete :number 
 }

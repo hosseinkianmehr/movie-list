@@ -21,7 +21,7 @@ const schema = yup.object().shape({
 
 export default function FormDialog() {
     const [open, setOpen] = React.useState(false);
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({resolver: yupResolver(schema)});
+    const { register, handleSubmit, reset } = useForm({resolver: yupResolver(schema)});
     const handleClickOpen = () => {
         setOpen(true);
     };

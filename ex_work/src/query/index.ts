@@ -1,5 +1,5 @@
 import { useQuery,useMutation, useQueryClient } from "react-query"
-import {  deleteMovie, getMovie, getMovies, getUser, loginUser, postMovies, registerUser } from "./request"
+import {  deleteMovie, getMovie, getMovies, getUser, postMovies, registerUser } from "./request"
 import { useNavigate } from "react-router-dom"
 
 export const useGetMovies = ()=>{
@@ -16,7 +16,7 @@ export const usePostMovies = ()=>{
           }
     }))
 }
-interface Id{
+interface Id {
     id : number
 }
 export const useGetMovie = (id:Id)=>{

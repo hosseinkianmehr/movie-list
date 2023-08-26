@@ -34,10 +34,7 @@ export default function Register() {
         }
         
     const handleclick =(data:RegisterData) => {
-        //mutation.mutate(data);
-        console.log(data,'data')
         mutation.mutate(data)
-        
         reset()
     }
     return (
@@ -65,7 +62,6 @@ export default function Register() {
                 <Grid item>
                     <TextField
                         {...register('firstname')}
-                        helperText="asdas "
                         helperText={errors.firstname && (errors.firstname.message)}
                         label="firstname"
                     />

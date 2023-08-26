@@ -1,11 +1,10 @@
-import React from 'react'
-import { useJwt } from 'react-jwt';
-import { useSelector } from 'react-redux';
+
 import { Navigate, Outlet } from 'react-router-dom';
+import { useAppSelector } from '../store/hook';
 
 
 const AuthenticationRoute = () => {
-    const islogin = useSelector((state) => state.auth.islogin)
+    const islogin = useAppSelector((state) => state.auth.islogin)
 
             if(islogin){
                 return <Navigate to="/"  />

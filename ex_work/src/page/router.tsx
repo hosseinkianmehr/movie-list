@@ -5,7 +5,6 @@ import Register from '../component/register';
 import PrivateRoute from './PrivateRoute';
 import AuthenticationRoute from './AuthenticationRoute';
 import Page from './Pages';
-import NotFound from '../component/NotFound';
 
 const Router = () => {
     return (
@@ -19,8 +18,6 @@ const Router = () => {
                 <Route element={<PrivateRoute />}>
                     <Route path='/*' element={<Page/>} />
                 </Route>
-
-                {/*  */}
                 
             </Routes>
         </>
