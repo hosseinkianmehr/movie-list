@@ -1,4 +1,5 @@
 import axios from "axios"
+import request from "../request"
 
 export interface GetMoviestype {
     id?: number,
@@ -7,7 +8,7 @@ export interface GetMoviestype {
     genre?: string
 }
 export const getMovies = async () => {
-    return (await axios.get<GetMoviestype[]>('http://localhost:3000/movies')).data
+    return (await request.get<GetMoviestype[]>('movies')).data
     console.log('api')
 };
 interface Data {
@@ -16,18 +17,18 @@ interface Data {
     genre?: string
 }
 export const postMovies = async (data: Data) => {
-    return (await axios.post<Data[]>('http://localhost:3000/movies', data)).data
+    return (await request.post<Data[]>('movies', data)).data
     console.log('api')
 }
 interface Id {
     id: number
 }
 export const getMovie = async (id: Id) => {
-    return (await axios.get<GetMoviestype>(`http://localhost:3000/movies/${id}/`)).data
+    return (await request.get<GetMoviestype>(`movies/${id}/`)).data
 }
 export const deleteMovie = async (id: number) => {
     console.log(id, 'id')
-    return (await axios.delete<GetMoviestype>(`http://localhost:3000/movies/${id}/`)).data
+    return (await request.delete<GetMoviestype>(`movies/${id}/`)).data
 }
 
 
@@ -40,7 +41,7 @@ interface RegisterData {
     password: string,
 }
 export const registerUser = async (data: RegisterData) => {
-    return (await axios.post<RegisterData[]>('http://localhost:3002/Register/', data)).data
+    return (await request.post<RegisterData[]>('Register/', data)).data
     console.log('api')
 }
 /*

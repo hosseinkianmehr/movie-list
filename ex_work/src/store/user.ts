@@ -17,19 +17,21 @@ type loginSuccessResponse = ServerResponse<loginSuccessData>
 
 
 interface Reduxtype{
-   token: string,
+   token: object,
    user: object,
    pending: boolean,
    rejected: boolean,
-   success: boolean
+   success: boolean,
+   islogin: false
 }
 
 const initialState:Reduxtype = {
-   token: '',
+   token: {},
    user: {},
    pending: false,
    rejected: false,
-   success: false
+   success: false,
+   islogin: false
 }
 
 export const login = createAsyncThunk("auth/login", async (data) => {
@@ -49,9 +51,9 @@ export const authSlice = createSlice({
       [login.fulfilled]: (state, action:PayloadAction<loginSuccessResponse>) => {
          localStorage.setItem("token", action.payload.accessToken);
          state.user = action.payload.user;
-         state.token = action.payload.accessToken;
          state.pending = false;
          state.success= true;
+         state.islogin = true;
       },
       [login.pending]: (state ) => {
          state.pending = true
@@ -64,7 +66,11 @@ export const authSlice = createSlice({
       logout: (state)=>{
          localStorage.removeItem("token");
          state.success= false;
-         console.log('sucsses false')
+         state.islogin = false;
+      },
+      login:(state,action)=>{
+         state.islogin = true;
+         state.token = action.payload;
       }
    } 
 })

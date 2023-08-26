@@ -1,28 +1,33 @@
 
 
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Movie from './component/movie';
 import Router from './page/router';
 import './App.css';
 import Header from './component/header';
-import { useDispatch, useSelector } from 'react-redux';
-import { authSlice } from './store/user';
-
-import { useJwt } from "react-jwt";
-import { useNavigate } from 'react-router-dom';
-import Routerpaga from './page/Pages';
-
-import Rout from './page';
+import { useJwt } from 'react-jwt';
+import { useDispatch } from 'react-redux';
+import { authActions } from './store/user';
 
 function App() {
 
   const queryClient = new QueryClient()
-  
-  
-  
+  const token = localStorage.getItem("token");
+  const dispatch = useDispatch()
+
+  if (token !== null) {
+    const { isExpired , decodedToken } = useJwt(token)
+    if (!isExpired) {
+      dispatch(authActions.login(decodedToken))
+    }else{
+      dispatch(authActions.logout())
+    }
+  }else{
+    dispatch(authActions.logout())
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
-      <Header/>  
+      <Header />
       <Router />
 
     </QueryClientProvider>

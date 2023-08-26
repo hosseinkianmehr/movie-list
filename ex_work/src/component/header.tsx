@@ -10,10 +10,11 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../store/user';
 
-export default function Header() {
-  const success = useSelector((state) => state.auth.success)
+export default function Header() {  
+  const islogin = useSelector((state) => state.auth.islogin)
+  //const user = useSelector((state) => state.auth.token)
   const dispatch = useDispatch()
-  const handlelogout =()=> {
+  const handlelogout = () => {
     dispatch(authActions.logout())
     console.log('handel clivk')
   }
@@ -22,18 +23,22 @@ export default function Header() {
       <AppBar position="static" style={{ backgroundColor: '#4c4848' }}>
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>
-            {success?
-            <>
-            {console.log('bbbbbbbbbbb')}
-            
-            <Button color="inherit" onClick={handlelogout}>logout</Button>
-            <Link to="/movie"><Button color="inherit">{'name'}</Button></Link>
-            </>
-            :
-            <>
-            {console.log(success,'gggggggg')}
-            <Link to="/movie"><Button color="inherit">regester</Button></Link>
-            </>
+            {islogin ?
+              <>
+                {console.log('bbbbbbbbbbb')}
+
+                <Button color="inherit" onClick={handlelogout}>logout</Button>
+                <Link to="/movie">
+                  <Button color="primary">
+                    {null}
+                    </Button>
+                </Link>
+              </>
+              :
+              <>
+                {console.log(islogin, 'gggggggg')}
+                <Link to="/movie"><Button color="inherit">regester</Button></Link>
+              </>
             }
           </Box>
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>dsfasdf</Typography>

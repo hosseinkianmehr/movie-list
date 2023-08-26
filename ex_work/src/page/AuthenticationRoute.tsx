@@ -1,17 +1,16 @@
 import React from 'react'
 import { useJwt } from 'react-jwt';
+import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 
 
 const AuthenticationRoute = () => {
-    const token = localStorage.getItem("token");
-    
-        if (token ) {
-            const { isExpired}=useJwt(token)
-            if(!isExpired){
+    const islogin = useSelector((state) => state.auth.islogin)
+
+            if(islogin){
                 return <Navigate to="/"  />
             }
-        }
+        
   
   
       // authorized so return outlet for child routes
