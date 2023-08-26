@@ -17,10 +17,10 @@ const Router = () => {
                 </Route>
 
                 <Route element={<PrivateRoute />}>
-                    <Route path='/' element={<Page/>} />
+                    <Route path='/*' element={<Page/>} />
                 </Route>
 
-                <Route path="*" element={<NotFound />} />
+                {/*  */}
                 
             </Routes>
         </>
