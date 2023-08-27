@@ -1,8 +1,9 @@
 import axios from "axios"
 import request from "../request"
+import type { registerFormData } from "../component/register";
 
 export interface GetMoviestype {
-    id?: number,
+    id: number,
     title: string,
     desc?: string,
     genre?: string
@@ -20,10 +21,8 @@ export const postMovies = async (data: Data) => {
     return (await request.post<Data[]>('movies', data)).data
     console.log('api')
 }
-interface Id {
-    id: number
-}
-export const getMovie = async (id: Id) => {
+
+export const getMovie = async (id: number) => {
     return (await request.get<GetMoviestype>(`movies/${id}/`)).data
 }
 export const deleteMovie = async (id: number) => {
@@ -40,7 +39,7 @@ interface RegisterData {
     age: number,
     password: string,
 }
-export const registerUser = async (data: RegisterData) => {
+export const registerUser = async (data: registerFormData) => {
     return (await request.post<RegisterData[]>('Register/', data)).data
     console.log('api')
 }
@@ -57,6 +56,6 @@ export const loginUser = async (data: LoginData) => {
 }
  */
 
-export const getUser = async (id: Id) => {
+export const getUser = async (id: number) => {
     return (await axios.get<RegisterData>(`http://localhost:3002/users/${id}/`)).data
 }

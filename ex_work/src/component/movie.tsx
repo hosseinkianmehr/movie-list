@@ -6,10 +6,11 @@ import DeletePage from './delete';
 const Movie = () => {
   console.log('hello')
   const { id } = useParams();
-  const { data } = useGetMovie(id as string)
-  console.log(data)
+  const sanitizedID = parseInt(id || "0") || 0
+  const { data } = useGetMovie(sanitizedID)
   return (
     <>
+      {data && (
       <Grid style={{ minHeight: '80vh', backgroundColor: '#4c4848', textAlign: 'center' }}>
         <Grid style={{ margin: 30 }}>
           <Typography variant="h2" color="white" >{data?.title}</Typography>
@@ -30,7 +31,7 @@ const Movie = () => {
         </Stack>
         <div style={{ height: 20 }}></div>
       </Grid>
-
+      )}
     </>
   )
 }

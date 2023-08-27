@@ -34,14 +34,10 @@ const initialState:Reduxtype = {
    islogin: false
 }
 
-export const login = createAsyncThunk("auth/login", async (data) => {
+export const login = createAsyncThunk("auth/login", async (data:object) => {
    const response = await axios.post('http://localhost:3002/login/', data)
    console.log(response.data, 'actionssss')
    return response.data
-}, {
-   serializeError: (err: any) => {
-      return { message: err.response.data.message }
-   }
 })
 
 export const authSlice = createSlice({

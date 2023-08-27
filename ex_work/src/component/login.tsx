@@ -6,10 +6,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 //import { useLogin } from '../query';
-import { useDispatch } from 'react-redux';
 import { login } from '../store/user';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../store/hook';
+import { useAppDispatch, useAppSelector } from '../store/hook';
 
 
 const schema = yup.object().shape({
@@ -20,7 +19,7 @@ const schema = yup.object().shape({
 export default function Login() {
 
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const success = useAppSelector((state) => state.auth.success)
     console.log(success, 'rejected')
     //const mutation =useLogin()

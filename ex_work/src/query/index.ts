@@ -16,10 +16,7 @@ export const usePostMovies = ()=>{
           }
     }))
 }
-interface Id {
-    id : number
-}
-export const useGetMovie = (id:Id)=>{
+export const useGetMovie = (id: number)=>{
     return (useQuery(["getMovies",id],()=>getMovie(id)))
 }
 export const useDeleteMovie = ()=>{
@@ -51,6 +48,6 @@ export const useLogin = ()=>{
     return (useMutation(loginUser))
 }; */
 
-export const useGetUser = (id:Id)=>{
+export const useGetUser = (id:number)=>{
     return (useQuery(["getMovies",id],()=>getUser(id)))
 }

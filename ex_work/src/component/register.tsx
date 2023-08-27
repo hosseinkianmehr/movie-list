@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import * as yup from "yup";
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import { useRegister } from '../query';
@@ -16,6 +16,8 @@ const schema = yup.object().shape({
     password:  yup.string().required(),
 })
 
+export type registerFormData = yup.InferType<typeof schema>
+
 export default function Register() {
 
     
@@ -25,15 +27,10 @@ export default function Register() {
     console.log(errors)
     const mutation =useRegister()
     console.log(mutation,'mutation')
-    interface RegisterData{
-        email:string,
-        firstName:string,
-        lastname:string ,
-        age:number,
-        password:string,
-        }
+
         
-    const handleclick =(data:RegisterData) => {
+    const handleclick:SubmitHandler<registerFormData> =(data) => {
+        console.log(data)
         mutation.mutate(data)
         reset()
     }
