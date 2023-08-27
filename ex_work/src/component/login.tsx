@@ -22,16 +22,9 @@ export default function Login() {
     const dispatch = useAppDispatch()
     const success = useAppSelector((state) => state.auth.success)
     console.log(success, 'rejected')
-    //const mutation =useLogin()
-    // console.log(mutation.data, "data.data")
-    interface LoginData {
-        email: string,
-        password: string,
-    }
-    const handleclick = (data: LoginData) => {
+    const handleclick = (data: LoginDataType) => {
         console.log(data, 'server')
         dispatch(login(data))
-
     }
     // const [navigates, setnavifates] = useState(false)
     const navigate = useNavigate()

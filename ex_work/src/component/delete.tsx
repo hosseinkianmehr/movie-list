@@ -8,11 +8,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useDeleteMovie,  useGetMovies } from '../query';
 import { Link } from "react-router-dom";
 import { useQueryClient } from 'react-query';
-interface Props{
-  delete :number 
-}
 
-export default function Delete(props: Props) {
+
+export default function Delete(props: DeleteProps) {
   const [open, setOpen] = React.useState(false);
     
   const handleClickOpen = () => {

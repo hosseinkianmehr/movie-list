@@ -32,11 +32,7 @@ export default function FormDialog() {
     };
 
     const mutation = usePostMovies()
-    interface Data{
-        title: string,
-        desc: string,
-        genre: string
-    }
+    
     const handleSubscribe = (data: Data ) => {
         console.log(data , 'dataaaaaaaaaaaaaaaaaaaaaaaaaa')
         mutation.mutate(data)

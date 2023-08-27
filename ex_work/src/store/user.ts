@@ -1,38 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
-interface ServerResponse<T> {
-   accessToken: string,
-   user: object
-   status: string
-   message: string
-   data: T
-}
 
-interface loginSuccessData {
-   accessToken: string,
-   user: object
-}
-
-type loginSuccessResponse = ServerResponse<loginSuccessData>
-
-
-interface Reduxtype{
-   token: object,
-   user: object,
-   pending: boolean,
-   rejected: boolean,
-   success: boolean,
-   islogin: boolean
-}
-
-const initialState:Reduxtype = {
-   token: {},
-   user: {},
-   pending: false,
-   rejected: false,
-   success: false,
-   islogin: false
-}
 
 export const login = createAsyncThunk("auth/login", async (data:object) => {
    const response = await axios.post('http://localhost:3002/login/', data)
