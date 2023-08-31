@@ -58,14 +58,7 @@ declare global{
         islogin: boolean
      }
      
-     const initialState:Reduxtype = {
-        token: {},
-        user: {},
-        pending: false,
-        rejected: false,
-        success: false,
-        islogin: false
-     }
+     
      /////////////////////
 
 }

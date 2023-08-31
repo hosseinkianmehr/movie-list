@@ -8,6 +8,15 @@ export const login = createAsyncThunk("auth/login", async (data:object) => {
    return response.data
 })
 
+const initialState:Reduxtype = {
+   token: {},
+   user: {},
+   pending: false,
+   rejected: false,
+   success: false,
+   islogin: false
+}
+
 export const authSlice = createSlice({
    name: "auth",
    initialState,

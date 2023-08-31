@@ -1,8 +1,10 @@
 import { useGetMovies } from '../query'
-import {  Card, Grid } from '@mui/material'
+import { Card, Grid, Pagination, PaginationItem, Stack } from '@mui/material'
 import FormDialog from './addedmovie'
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export default function Movis() {
     const { data } = useGetMovies()
@@ -28,7 +30,7 @@ export default function Movis() {
                     ))
                 }
             </Grid>
-
+           
         </>
     )
 }
