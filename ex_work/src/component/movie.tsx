@@ -1,12 +1,13 @@
-import { useParams } from 'react-router-dom';
+import { useSearchParams , useLocation ,useParams } from 'react-router-dom';
 import { useGetMovie } from '../query';
 import {  Typography, Grid, Stack } from '@mui/material'
 import DeletePage from './delete';
 
 const Movie = () => {
   console.log('hello')
-  const { id } = useParams();
-  const sanitizedID = parseInt(id || "0") || 0
+  const param = useParams();
+  
+  const sanitizedID = parseInt(param.id || "0") || 0
   const { data } = useGetMovie(sanitizedID)
   return (
     <>

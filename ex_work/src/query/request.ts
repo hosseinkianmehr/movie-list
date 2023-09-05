@@ -1,12 +1,26 @@
 import axios from "axios"
 import request from "../request"
 import type { registerFormData } from "../component/register";
-
+import parse from 'parse-link-header'
+//var parse = require('parse-link-header');
 
 export const getMovies = async () => {
     return (await request.get<GetMoviestype[]>('movies')).data
     console.log('api')
 };
+
+export const GetMoviesPage = async (page: number) => {
+    return (await request.get<GetMoviestype>(`movies?_page=${page}&_limit=10/`)).data
+    // const parslink = parse(res.headers.Link)
+    // console.log(parslink.last.page,'parslink.last.page')
+    
+    // return {
+    //     data:res.data,
+    //     lastpagination : parslink.last.page
+    // }
+    
+
+}
 
 export const postMovies = async (data: postMoviesData) => {
     return (await request.post<postMoviesData[]>('movies', data)).data

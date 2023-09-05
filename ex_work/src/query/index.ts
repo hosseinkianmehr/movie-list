@@ -1,9 +1,13 @@
 import { useQuery,useMutation, useQueryClient } from "react-query"
-import {  deleteMovie, getMovie, getMovies, getUser, postMovies, registerUser } from "./request"
+import {  GetMoviesPage, deleteMovie, getMovie, getMovies, getUser, postMovies, registerUser } from "./request"
 import { useNavigate } from "react-router-dom"
 
 export const useGetMovies = ()=>{
     return (useQuery("getMovies",getMovies))
+}
+
+export const useGetMoviesPage = (page:number)=>{
+    return (useQuery(["GetMoviesPage",page],()=>GetMoviesPage(page)))
 }
 
 export const usePostMovies = ()=>{
